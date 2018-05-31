@@ -37,7 +37,7 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:title, :description, :information)
+    params.require(:page).permit(:title, :description, :information, :image)
   end
 
   def find_page
