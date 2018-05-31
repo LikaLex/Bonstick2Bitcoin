@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :find_page, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   def index
     @page = Page.all.order("created_at DESC")
   end
@@ -9,11 +10,11 @@ class PagesController < ApplicationController
   end
 
   def new
-    @page = Page.new
+    @page = current_user.pages.build
   end
 
   def create
-    @page = Page.new(page_params)
+    @page = current_user.pages.build(page_params)
     if @page.save
       redirect_to @page, notice: 'Successfully creating new page'
     end

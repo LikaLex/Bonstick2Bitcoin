@@ -2,7 +2,10 @@
 %h1= @page.title
 %p= @page.description
 %p= @page.information
+%p Submitted by
+%p= @page.user.email
 
 = link_to  'Back' , root_path, class: 'btn btn-default'
-= link_to 'Edit', edit_page_path, class: 'btn btn-default'
-= link_to 'Delete', page_path, method: :delete, data: {confirm: 'Are you sure?' }, class: 'btn btn-default'
+- if user_signed_in?
+  = link_to 'Edit', edit_page_path, class: 'btn btn-default'
+  = link_to 'Delete', page_path, method: :delete, data: {confirm: '"Are you sure?" '}, class: 'btn btn-default'
