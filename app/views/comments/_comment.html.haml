@@ -1,0 +1,5 @@
+.comment
+  %p= comment.comment
+  %p= comment.user.email
+  = link_to 'Edit', edit_page_comment_path(comment.page, comment)
+  = link_to 'Delete', [comment.page, comment], method: :delete, data: { confirm: 'Are you sure?' }

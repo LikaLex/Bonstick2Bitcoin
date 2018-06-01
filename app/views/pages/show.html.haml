@@ -5,6 +5,13 @@
 %p Submitted by
 %p= @page.user.email
 
+#comments
+  %h2= @page.comments.count
+  = render @page.comments
+
+  %h3 Reply to thread
+  = render "comments/form"
+
 = link_to  'Back' , root_path, class: 'btn btn-default'
 - if user_signed_in?
   = link_to 'Edit', edit_page_path, class: 'btn btn-default'
