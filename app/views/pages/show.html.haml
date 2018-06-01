@@ -6,13 +6,19 @@
 %p= @page.user.email
 
 #comments
-  %h2= @page.comments.count
+  %h2
+    = @page.comments.count
+    Comments
   = render @page.comments
 
   %h3 Reply to thread
   = render "comments/form"
 
-= link_to  'Back' , root_path, class: 'btn btn-default'
-- if user_signed_in?
-  = link_to 'Edit', edit_page_path, class: 'btn btn-default'
-  = link_to 'Delete', page_path, method: :delete, data: {confirm: '"Are you sure?" '}, class: 'btn btn-default'
+  %br/
+  %hr/
+  %br/
+
+  = link_to "Edit", edit_page_path(@page), class: "button"
+  = link_to "Delete", page_path(@page), method: :delete, data: { confirm: "Are you sure you want to do this?" }, class: "button"
+  = link_to "Home", root_path
+
